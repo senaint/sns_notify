@@ -4,12 +4,6 @@ variable "region_name" {
   default     = "us-east-1"
 }
 
-variable "test" {
-  description = "Run Testing Shellscript"
-  type        = bool
-  default     = true
-}
-
 variable "sns_topic_name" {
   description = "SNS Topic Name"
   type        = string
@@ -19,7 +13,7 @@ variable "sns_topic_name" {
 variable "sns_topic_name_prefix" {
   description = "SNS Topic Name"
   type        = string
-  default     = "s3-newfile-notify"
+  default     = "s3-sns-notfication-topic"
 }
 
 variable "bucket_name" {

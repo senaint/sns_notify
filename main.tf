@@ -18,21 +18,10 @@ module "sns_topic" {
   source  = "terraform-aws-modules/sns/aws"
   version = "~> 3.0"
 
-  name_prefix = try(var.sns_topic_name_prefix,"${random_pet.this.id}-2")
+  name_prefix = try(var.sns_topic_name_prefix, "${random_pet.this.id}-2")
 
 }
 
-output "sns_topic_arn" {
-  value = module.sns_topic.sns_topic_arn
-}
-
-output "bucket_id" {
-  value = module.s3_bucket.s3_bucket_id
-}
-
-output "email_id" {
-  value = var.email_target
-}
 resource "aws_sns_topic_subscription" "email-target" {
   topic_arn = module.sns_topic.sns_topic_arn
   protocol  = "email"
